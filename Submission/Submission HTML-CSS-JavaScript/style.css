@@ -118,7 +118,7 @@ main {
 }
 
 main .rcp-ttl {
-    margin: 2em auto;
+    margin: 6em auto;
     display: flex;
     width: 10%;
     height: 10%;
@@ -175,6 +175,9 @@ main .rcp-ttl {
     transform: scale(0.9);
     opacity: 1;
 }
+
+/* About */
+
 
 /* Responsive */
 @media (max-width: 600px) {
