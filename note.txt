@@ -1,0 +1,33 @@
+Link Penting Guys !
+
+Article, Tips :
+https://dev.to/
+https://medium.com/
+https://css-tricks.com/
+
+Showcase :
+https://codepen.io/
+
+Checker :
+https://caniuse.com/
+https://specificity.keegan.st/
+
+Roadmap :
+https://roadmap.sh/frontend 
+https://roadmap.sh/backend
+
+Others :
+http://getbem.com/introduction/
+
+
+const restaurant = {
+	name : "Jardin",
+  	city : "jakarta",
+  	favoriteDrink : "Mango Slushie",
+  	favoriteFood : "Steak",
+  	isVegan : false
+};
+let name = restaurant.name = "Oura";
+let favoriteDrink = restaurant.favoriteDrink  = "Mango Juice";
+
+console.log(restaurant);
