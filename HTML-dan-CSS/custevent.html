@@ -36,7 +36,10 @@
                     tombol.dispatchEvent(changeCaption);
                 });
             });
+            //ev merupakan event sedangkan eve.type merupakan tipe dari eventnya 
+            //karena kita disini menggunakan custom event bernama changeCaption maka type nya merupakan changeCaption
             function customEventHandler(ev){
+                console.log(ev)
                 console.log("Event "+ev.type+" telah dijalankan");
                 const caption = document.getElementById("caption");
                 caption.innerText = "Anda telah membangkitkan custom event";
