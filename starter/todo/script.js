@@ -91,17 +91,9 @@ function makeTodo(todoObject) {
         undoButton.addEventListener("click", function () {
             undoTaskFromCompleted(todoObject.id);
         });
-
-        undoButton.addEventListener("click", function () {
-            undoTaskFromCompleted(todoObject.id);
-        });
     
         const trashButton = document.createElement("button");
         trashButton.classList.add("trash-button");
-        trashButton.addEventListener("click", function () {
-            removeTaskFromCompleted(todoObject.id);
-        });
-
         trashButton.addEventListener("click", function () {
             removeTaskFromCompleted(todoObject.id);
         });
