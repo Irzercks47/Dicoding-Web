@@ -1,4 +1,8 @@
 const books = [];
+const RENDER_EVENT = "render-books";
+
+const SAVED_EVENT = "saved-books";
+const STORAGE_KEY = "BOOKS_APPS";
 
 function isStorageExist() {
     if(typeof(Storage) === undefined){
@@ -8,11 +12,12 @@ function isStorageExist() {
     return true;
 }
 
-document.addEventListener("DOMContentLoaded", ()=> {
+document.addEventListener("DOMContentLoaded", () => {
     const submitForm = document.getElementById("inputBook");
 
     submitForm.addEventListener("submit", function (event) {
         event.preventDefault();
+        console.log("masuk dom");
         addBook();
     });
     
@@ -25,7 +30,7 @@ function generateId() {
     return +new Date();
 }
 
-function generateObject(id, title, author, year,isCompleted) {
+function generateBookObject(id, title, author, year,isCompleted) {
     return {
         id,
         title,
@@ -36,14 +41,15 @@ function generateObject(id, title, author, year,isCompleted) {
 }
 
 function addBook() {
-    let bookTitle = document.getElementById("inputBookTitle").value;
-    let bookAuthor = document.getElementById("inputBookAuthor").value;
-    let bookYear = document.getElementById("inputBookYear").value;
-    let bookIsComp = document.getElementById("inputBookIsComplete").checked;
+    const bookTitle = document.getElementById("inputBookTitle").value;
+    const bookAuthor = document.getElementById("inputBookAuthor").value;
+    const bookYear = document.getElementById("inputBookYear").value;
+    const bookIsComp = document.getElementById("inputBookIsComplete").checked;
 
-    let generatedID = generateId();
-    let booksObj = generateObject(generatedID, bookTitle, bookAuthor, bookYear, bookIsComp);
-    books.push(booksObj);
+    const generatedID = generateId();
+    const bookObject = generateBookObject(generatedID,bookTitle,bookAuthor,bookYear,bookIsComp);
+    books.push(bookObject);
+    console.log("masuk add")
 
     document.dispatchEvent(new Event(RENDER_EVENT));
     saveData();
@@ -56,7 +62,7 @@ document.addEventListener(RENDER_EVENT, function () {
     const compList = document.getElementById("completeBookshelfList");
     compList.innerHTML = "";
     
-    for(book of objBooks){
+    for(book of books){
         const printLib = printBook(book);
 
         if(book.isCompleted == false)
@@ -77,17 +83,18 @@ function printBook(objBook){
     textYear.innerText = objBook.year;
     
     const artContainer = document.createElement("article");
-    artContainer.classList.add("book_list")
+    artContainer.classList.add("book_list");
     artContainer.append(textTitle, textAuthor, textYear);
-    
-    const container = document.createElement("div");
-    container.classList.add("item", "shadow")
-    container.append(container);
-    container.setAttribute("id", `todo-${objBook.id}`);
+    artContainer.setAttribute("id", `book-${objBook.id}`);
+
+    const buttonCont = document.createElement('div');
+    buttonCont.classList.add("action")
 
     if(objBook.isCompleted){
         const hapusButton = document.createElement("button");
         const undoButton = document.createElement("button");
+        undoButton.innerText = "Belum Selesai Di baca";
+        hapusButton.innerText = "Hapus Buku";
         undoButton.classList.add("green");
         undoButton.classList.add("red");
         hapusButton.addEventListener("click", function () {
@@ -98,14 +105,16 @@ function printBook(objBook){
             undoBook(objBook.id);
         });
 
-        container.append(undoButton, hapusButton);
+        buttonCont.append(undoButton, hapusButton);
     } else {
         const hapusButton = document.createElement("button");
         const checkButton = document.createElement("button");
         checkButton.classList.add("green");
         hapusButton.classList.add("red");
+        checkButton.innerText = "Selesai Di baca";
+        hapusButton.innerText = "Hapus Buku";
         checkButton.addEventListener("click", function () {
-            addBook(objBook.id);
+            addBookToUncomp(objBook.id);
         });
 
         hapusButton.addEventListener('click', () => {
@@ -113,13 +122,15 @@ function printBook(objBook){
         })
         
 
-        container.append(checkButton, hapusButton);
+        buttonCont.append(checkButton, hapusButton);
     }
 
-    return container;
+    artContainer.append(buttonCont);
+
+    return artContainer;
 }
 
-function addBook(bookId) {
+function addBookToUncomp(bookId) {
     const bookTarget = findBook(bookId);
     if(bookTarget == null) return;
 
@@ -138,7 +149,7 @@ function findBook(bookId){
 }
 
 function removeBook(bookId) {
-    const bookTarget = findTodoIndex(bookId);
+    const bookTarget = findIndex(bookId);
     if(bookTarget === -1) return;
     todos.splice(bookTarget, 1);
 
@@ -155,11 +166,38 @@ function undoBook(bookId){
     saveData();
 }
 
-function findTodoIndex(bookId) {
-    for(index in todos){
+function findIndex(bookId) {
+    for(index in books){
         if(books[index].id === bookId){
             return index
         }
     }
     return -1
+}
+
+function saveData() {
+    if(isStorageExist()){
+        const parsed = JSON.stringify(books);
+        localStorage.setItem(STORAGE_KEY, parsed);
+        document.dispatchEvent(new Event(SAVED_EVENT));
+    }
+}
+
+document.addEventListener(SAVED_EVENT, function() {
+    console.log(localStorage.getItem(STORAGE_KEY));
+});
+
+function loadData() {
+    const bookData = localStorage.getItem(STORAGE_KEY);
+    
+    let data = JSON.parse(bookData);
+    
+    if(data !== null){
+        for(book of data){
+            books.push(book);
+        }
+    }
+    
+    
+    document.dispatchEvent(new Event(RENDER_EVENT));
 }
