@@ -211,9 +211,7 @@ searchForm.addEventListener('input', (e) => {
 
 function searchBook(input) {
     const booksTitle = document.querySelectorAll('.book_item h3')
-    console.log(booksTitle)
     booksTitle.forEach(book => {
-        console.log(book.innerText.toLowerCase())
         const isVisible = book.innerText.toLowerCase().includes(input)
         book.parentElement.classList.toggle('hide', !isVisible)
     })
