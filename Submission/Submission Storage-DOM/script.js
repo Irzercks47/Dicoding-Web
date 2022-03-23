@@ -93,12 +93,13 @@ function printBook(objBook){
     if(objBook.isCompleted){
         const hapusButton = document.createElement("button");
         const undoButton = document.createElement("button");
-        undoButton.innerText = "Belum Selesai Di baca";
+        undoButton.innerText = "Belum Selesai Dibaca";
         hapusButton.innerText = "Hapus Buku";
         undoButton.classList.add("green");
         undoButton.classList.add("red");
         hapusButton.addEventListener("click", function () {
             removeBook(objBook.id);
+            alert("Menghapus buku" + " " + objBook.title);
         });
 
         undoButton.addEventListener("click", function () {
@@ -111,7 +112,7 @@ function printBook(objBook){
         const checkButton = document.createElement("button");
         checkButton.classList.add("green");
         hapusButton.classList.add("red");
-        checkButton.innerText = "Selesai Di baca";
+        checkButton.innerText = "Selesai Dibaca";
         hapusButton.innerText = "Hapus Buku";
         checkButton.addEventListener("click", function () {
             addBookToUncomp(objBook.id);
@@ -119,6 +120,7 @@ function printBook(objBook){
 
         hapusButton.addEventListener('click', () => {
             removeBook(objBook.id);
+            alert("Menghapus buku" + " " + objBook.title);
         })
         
 
@@ -151,7 +153,7 @@ function findBook(bookId){
 function removeBook(bookId) {
     const bookTarget = findIndex(bookId);
     if(bookTarget === -1) return;
-    todos.splice(bookTarget, 1);
+    books.splice(bookTarget, 1);
 
     document.dispatchEvent(new Event(RENDER_EVENT));
     saveData();
