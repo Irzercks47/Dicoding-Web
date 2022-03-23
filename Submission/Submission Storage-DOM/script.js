@@ -83,7 +83,7 @@ function printBook(objBook){
     textYear.innerText = objBook.year;
     
     const artContainer = document.createElement("article");
-    artContainer.classList.add("book_list");
+    artContainer.classList.add("book_item");
     artContainer.append(textTitle, textAuthor, textYear);
     artContainer.setAttribute("id", `book-${objBook.id}`);
 
@@ -158,7 +158,7 @@ function removeBook(bookId) {
 } 
 
 function undoBook(bookId){
-    const bookTarget = findTodo(bookId);
+    const bookTarget = findBook(bookId);
     if(bookTarget == null) return;
 
     bookTarget.isCompleted = false;
@@ -200,4 +200,21 @@ function loadData() {
     
     
     document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+const searchForm = document.getElementById('searchBookTitle');
+
+searchForm.addEventListener('input', (e) => {
+    const value = e.target.value.toLowerCase()
+    searchBook(value)
+})
+
+function searchBook(input) {
+    const booksTitle = document.querySelectorAll('.book_item h3')
+    console.log(booksTitle)
+    booksTitle.forEach(book => {
+        console.log(book.innerText.toLowerCase())
+        const isVisible = book.innerText.toLowerCase().includes(input)
+        book.parentElement.classList.toggle('hide', !isVisible)
+    })
 }
