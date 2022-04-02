@@ -14,3 +14,6 @@ class DataSource{
         })
     };
 }
+
+export default DataSource
+import clubs from './clubs.js';

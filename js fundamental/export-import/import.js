@@ -22,6 +22,6 @@ console.log(isCoffeeMakerReady);
 
 //es6
 import coffeeStock from "./import.js";
-
+``
 //atau
-import { coffeeStock, isCoffeeMakerReady } from "./import.js";
+import { coffeeStock as stock, isCoffeeMakerReady } from "./import.js";

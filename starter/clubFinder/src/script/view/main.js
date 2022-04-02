@@ -34,3 +34,6 @@ const main =  () => {
 
     buttonSearchElement.addEventListener("click", onButtonSearchClicked);
 };
+
+export default main;
+import DataSource from '../data/data-source.js';
