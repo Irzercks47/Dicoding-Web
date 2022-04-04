@@ -1,3 +1,4 @@
+//berisi data yang akan kita tampilkan
 const article = {
     id: 1,
     title: "Lorem Ipsum Dolor",

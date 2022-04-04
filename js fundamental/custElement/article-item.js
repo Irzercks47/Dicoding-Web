@@ -1,6 +1,9 @@
+//kita hanya perlu melakukan setter untuk mengambil data 
 class ArticleItem extends HTMLElement {
     set article(article) {
+        //data tersebut dimasukkan dalam _article
         this._article = article;
+        //setelah data msuk maka kita akan menjalankan method render
         this.render();
     }
 
