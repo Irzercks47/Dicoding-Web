@@ -1,14 +1,17 @@
 import DataSource from '../data/data-source.js';
-import '../component/searchBar.js';
+import '../../component/searchBar.js';
 
 const main =  () => {
     const searchElement = document.querySelector("search-bar");
     const clubListElement = document.querySelector("#clubList");
 
     const onButtonSearchClicked = () => {
+        try{
             DataSource.searchClub(searchElement.value)
-                .then(renderResult)
-                .catch(fallbackResult)
+            renderResult(result)
+        }catch{
+            fallbackResult(message)
+        }
     };
 
     const renderResult = results => {
