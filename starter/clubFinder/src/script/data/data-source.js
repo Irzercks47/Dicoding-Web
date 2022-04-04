@@ -1,3 +1,4 @@
+import clubs from './clubs.js';
 class DataSource{
     static searchClub(keyword) {
         return new Promise((res, reject) => {
@@ -16,4 +17,3 @@ class DataSource{
 }
 
 export default DataSource
-import clubs from './clubs.js';
