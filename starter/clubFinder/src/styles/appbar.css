@@ -1,4 +1,6 @@
-.app-bar {
+app-bar {
+    /* display custom element default nya adalah inline jadi kalo berdimensi display harus diganti */
+    display: block;
     padding: 16px;
     width: 100%;
     background-color: cornflowerblue;
