@@ -1,0 +1,2 @@
+devDependecies digunakan untuk mendaftarkan package yang digunakan hanya selama pengembangan saja. Contohnya package yang berfungsi sebagai web server lokal seperti http-server, atau package yang berfungsi untuk membundel JavaScript seperti webpack. Untuk memasang package sebagai devDependencies kita gunakan perintah 
+npm install <package-name> --save-dev
