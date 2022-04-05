@@ -1,2 +1,17 @@
 devDependecies digunakan untuk mendaftarkan package yang digunakan hanya selama pengembangan saja. Contohnya package yang berfungsi sebagai web server lokal seperti http-server, atau package yang berfungsi untuk membundel JavaScript seperti webpack. Untuk memasang package sebagai devDependencies kita gunakan perintah 
 npm install <package-name> --save-dev
+
+untuk menjalankan script yang ada di node module kita menggunakan npm run <script name> 
+coba tambahkan "start": "http-server ." di bagian script yang ada di package.json
+kemudian masukkan command
+
+npm run start
+
+untuk menghapus module menggunakan command 
+npm uninstall <package-name>
+
+jika pada devDependecies menggunakan command
+npm uninstall <package-name> --save-dev
+
+untuk menginstall secara global jadi dia akan terinstall di C:
+npm install http-server -g
