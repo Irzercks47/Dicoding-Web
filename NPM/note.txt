@@ -80,3 +80,14 @@ Yang terakhir package @babel/preset-env merupakan package preset yang akan kita 
 Ketika menerapkan rule untuk berkas .js, jangan lupa untuk menetapkan properti exclude dengan nilai “/node_modules/”. Apa artinya? Dengan menetapkan properti exclude itu berarti kita mengecualikan webpack untuk memproses berkas .js yang berada pada folder “node_modules”. 
 Hal ini dapat meminimalisir proses yang tidak diperlukan, sehingga mempercepat proses build pada proyek kita.  
 
+Ketika membuat web application tentunya kita membutuhkan minimal satu berkas HTML yang biasanya dinamai dengan index.html. Dengan menambahkan plugin HtmlWebpackPlugin, Webpack dapat membuatkan berkas HTML dan memasukkan script hasil bundel pada berkas HTML yang dibuat secara otomatis. 
+HtmlWebpackPlugin juga mendukung templating dan penggunaannya sangat dapat dikonfigurasi.
+
+commadn dari plugin ini adalah 
+npm install html-webpack-plugin --save-dev
+
+Setelah memasangnya, pada berkas webpack.config.js lakukan impor package html-webpack-plugin sebagai objek dengan nama HtmlWebpackPlugin.
+pada plugin kita menetapkan konfigurasi untuk template dan filename. Template di sana merupakan berkas rujukan bagi pembuatan berkas HTML yang dihasilkan HtmlWebpackPlugin. 
+Lalu nilai dari properti filename akan digunakan sebagai penamaan berkas HTML yang akan dihasilkan nanti.
+untuk membedakannya set sehingga sekarang akan di hasilkan di src dengan nama template html
+karena HtmlWebpackPlugin secara otomatis akan memasukan output script bundle pada berkas HTML yang dihasilkannya, kita tidak perlu menetapkan tag <script> secara manual pada berkas template.html. Dengan begitu kita dapat menghapusnya.

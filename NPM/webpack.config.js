@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -9,8 +10,8 @@ module.exports = {
     mode: "production",
     module: {
         rules: [
+            /* style and css loader */
             {
-                /* style and css loader */
                 test: /\.css$/,
                 use: [
                     {
@@ -21,7 +22,7 @@ module.exports = {
                     }
                 ]
             },
-                /* babel loader */
+            /* babel loader */
             {
                 test: /\.js$/,
                 exclude: "/node_modules/",
@@ -35,5 +36,13 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    /* plugin */
+    plugins: [
+        /* HTML Webpack Plugin */
+        new HtmlWebpackPlugin({
+            template: "./src/template.html",
+            filename: "coba.html"
+        })
+    ]
 }
