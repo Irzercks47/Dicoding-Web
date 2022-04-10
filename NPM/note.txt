@@ -15,3 +15,35 @@ npm uninstall <package-name> --save-dev
 
 untuk menginstall secara global jadi dia akan terinstall di C:
 npm install http-server -g
+
+kegunaan webpack adalah untuk membundle file kita menjadi 1 berkas atau lebih jadi misalkan kita memiliki 200++ berkas dimana 100 merupakan file css dan 100 lagi merupakan file js 
+kita bisa membundle menjadi 2 file yang dimana 1 berisi css dan 1 nya lagi berupa js webpack memiliki core concepts yaitu:
+
+Entry : Titik awal di mana webpack akan menganalisa berkas dan membentuk dependency graph.
+Output : Berkas bundel yang dihasilkan dari berkas-berkas yang dianalisis webpack berdasarkan entry point.
+Loaders :  Transformation tools pada webpack, yang akan memproses setiap berkas selain JavaScript atau JSON yang kita impor menjadi format yang dapat digunakan ke tahap produksi.
+Plugin :  Digunakan untuk melakukan tugas seperti optimasi bundel, management aset dan sebagainya.
+Mode : Kondisi yang digunakan webpack sebagai acuan optimasi apa saja yang harus diterapkan dalam melakukan tugasnya. Dalam mode kita dapat menetapkan nilai production, development atau pun none.
+
+Entry atau entry point merupakan modul pertama yang akan dianalisa oleh webpack ketika ia dijalankan. 
+Melalui entry point inilah webpack akan membentuk dependency graph. Webpack akan mencari tahu modul lain yang digunakan pada entry point dan menggabungkannya menjadi satu static assets.
+secara default entry harus ditaruh di folder src
+
+Output merupakan salah satu properti yang terdapat pada webpack configuration. Properti ini berfungsi untuk memberitahu webpack di mana dan bagaimana lokasi static assets yang telah dibundel harus disimpan dan diberi nama. 
+Standarnya lokasi penyimpanannya berada pada dist -> main.js. Lokasi dist merupakan lokasi standar untuk menyimpan berkas yang dihasilkan oleh webpack.
+
+Dalam melaksanakan tugas, sejatinya Webpack hanya mengenali berkas JavaScript dan JSON. Namun melalui loaders Webpack dapat memproses berkas berformat lain seperti css, sass, pug, jsx, atau yang lainnya.
+Loaders merupakan sebuah transformation tools pada Webpack yang akan memproses setiap berkas selain JavaScript atau JSON yang kita impor menjadi format yang dapat digunakan ke tahap produksi.
+
+Plugin pada webpack digunakan untuk melakukan tugas seperti optimasi bundel, management aset, dan sebagainya. Dengan adanya plugin ini, webpack menjadi lebih fleksibel. 
+Plugin merupakan tulang punggung dari webpack. Bahkan webpack sendiri dibangun menggunakan sistem plugin yang sama seperti yang kita lakukan pada webpack configuration.
+
+mode merupakan salah satu properti yang terdapat pada webpack configuration. Dengan memberikan mode dengan nilai development, production, atau none, kita dapat melakukan optimasi pada webpack berdasarkan mode yang kita kehendaki.
+Jika kita tidak menetapkan nilai pada properti mode, secara default akan bernilai production.
+
+untuk memasang webpack kita bisa menggunakan command:
+npm install webpack --save-dev
+npm install webpack-cli --save-dev
+
+atau bisa disingkat:
+npm install webpack webpack-cli --save-dev
