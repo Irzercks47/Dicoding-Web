@@ -47,3 +47,36 @@ npm install webpack-cli --save-dev
 
 atau bisa disingkat:
 npm install webpack webpack-cli --save-dev
+Mengapa kita membutuhkan dua package dalam memasang webpack? Apa fungsi package webpack dan webpack-cli? Package webpack merupakan package inti dari webpack itu sendiri. Sedangkan package webpack-cli merupakan package yang digunakan untuk membantu kita menjalankan webpack melalui sebuah perintah (Command Line Interface). 
+Pada CLI juga kita dapat memberikan argumen seperti menetapkan berkas webpack config atau mode dalam proses build.
+
+lalu pada package.json tambahakan ini di bagian script untuk menjalankan webpack via cli:
+"build": "webpack"
+
+dalam memakai webpack kita harus memperhatikan setting dari webpack kita dan kita juga harus melihat size file bundle yang telah dibuat webpack
+karena bila file lebih besar dari yang disarankan maka akan mempengaruhi performa website dan kita harus juga memperhatikan dependencies dari bundle tersebut kalau terlalu banyak maka file bundle akan besar juga jadinya
+
+webpack mempunyai banyak loader namun yang sering digunakan hanya beberapa 
+contoh pada css menggunakan 2 loader yaitu css loader dan style loader
+css-loader merupakan loader untuk memproses berkas dengan format .css. 
+Sedangkan style-loader merupakan loader yang digunakan untuk membuat styling dapat diterapkan secara modular dengan menggunakan import statement.
+
+untuk install keduanya kita bisa menggunakan command:
+npm install style-loader css-loader --save-dev
+Setelah berhasil, pada berkas webpack.config.js kita tambahkan properti module.rules dan isikan nilai loader
+lalu tambahakan import pada file yang menjadi entry nya 
+
+kemudian untk js ada namanya babel loader merupakan sebuah transpiler yang bertugas untuk mengubah sintaks JavaScript modern (ES6+) menjadi sintaks yang dapat didukung penuh oleh seluruh browser.
+
+command yang digunakan untuk menginstall adalah
+npm install @babel/core babel-loader @babel/preset-env --save-dev
+Package @babel/core merupakan package inti yang harus dipasang ketika kita hendak menggunakan babel, baik pada webpack maupun tools yang lain.
+
+Package babel-loader merupakan package yang diperlukan untuk menggunakan babel sebagai loader pada webpack.
+
+Yang terakhir package @babel/preset-env merupakan package preset yang akan kita gunakan untuk membantu babel-loader dalam melakukan tugasnya. 
+@babel/preset-env merupakan preset cerdas yang memungkinkan kita menggunakan sintaks JavaScript terbaru tanpa menetapkan secara spesifik sintaks JavaScript versi apa yang kita gunakan.
+
+Ketika menerapkan rule untuk berkas .js, jangan lupa untuk menetapkan properti exclude dengan nilai “/node_modules/”. Apa artinya? Dengan menetapkan properti exclude itu berarti kita mengecualikan webpack untuk memproses berkas .js yang berada pada folder “node_modules”. 
+Hal ini dapat meminimalisir proses yang tidak diperlukan, sehingga mempercepat proses build pada proyek kita.  
+
