@@ -1,3 +1,5 @@
-import main from "./src/script/view/main.js";
-import "./src/component/appBar.js"
+import "./styles/style.css";
+import "./component/app-bar.js";
+import main from "./script/view/main.js";
+
 document.addEventListener("DOMContentLoaded", main);
