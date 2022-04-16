@@ -1,1 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './component/navBar.js'
+const main = () => {
+
+}
+
+export default main;
