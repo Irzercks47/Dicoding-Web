@@ -1,7 +1,6 @@
 class NavBar extends HTMLElement {
     constructor(){
         super()
-        this.shadowDOM = this.attachShadow({mode: "open"})
     }
 
     connectedCallback(){
@@ -9,8 +8,9 @@ class NavBar extends HTMLElement {
     }
 
     render(){
-        this.shadowDOM.innerHTML = `
+        this.innerHTML = `
             <style>
+                @import url('https://fonts.googleapis.com/css2?family=Gelasio&family=Merriweather+Sans:ital,wght@1,300&family=Merriweather:wght@900&family=Open+Sans+Condensed:wght@300&family=Oswald:wght@300&family=Playfair+Display:ital@0;1&family=Poppins:wght@300;400&family=Roboto+Slab:wght@300;600&family=Rubik:wght@500&family=Titillium+Web:ital,wght@0,200;0,300;1,200&display=swap');
                 * {
                     box-sizing: border-box;
                     margin: 0;
@@ -22,8 +22,9 @@ class NavBar extends HTMLElement {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    background-color: #F76E11;
+                    background-color: rgb(59, 151, 252);
                     color: white;
+                    padding: 0 2%;
                 }
 
                 .nav-tittle {
@@ -49,7 +50,7 @@ class NavBar extends HTMLElement {
                 }
 
                 .nav-links li:hover {
-                    background-color: #FF9F45;
+                    background-color: rgb(50, 140, 202);
                 }
 
                 .toggle-button {
@@ -119,8 +120,8 @@ class NavBar extends HTMLElement {
                 </div>
             </nav>
         `
-        const toggleButton = this.shadowDOM.querySelector('.toggle-button')
-        const navLinks = this.shadowDOM.querySelector('.nav-links')
+        const toggleButton = this.querySelector('.toggle-button')
+        const navLinks = this.querySelector('.nav-links')
 
         toggleButton.addEventListener('click', () =>{
             navLinks.classList.toggle('active')
