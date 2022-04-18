@@ -41,7 +41,7 @@ class SearchBar extends HTMLElement{
 
                 .search-container > input:focus {
                     outline: 0;
-                    border-bottom: 2px solid rgb(50, 140, 202);
+                    border-bottom: 2px solid rgb(50, 110, 180);
                 }
 
                 .search-container > input:focus::placeholder {
