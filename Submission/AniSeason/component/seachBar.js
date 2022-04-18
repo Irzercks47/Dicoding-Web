@@ -36,12 +36,11 @@ class SearchBar extends HTMLElement{
                     padding: 16px;
                     border: 0;
                     border-bottom: 1px solid rgb(50, 140, 202);
-                    font-weight: bold;
                 }
 
                 .search-container > input:focus {
                     outline: 0;
-                    border-bottom: 2px solid rgb(50, 110, 180);
+                    border-bottom: 1.5px solid rgb(50, 110, 180);
                 }
 
                 .search-container > input:focus::placeholder {
@@ -49,8 +48,8 @@ class SearchBar extends HTMLElement{
                 }
 
                 .search-container >  input::placeholder {
-                    color: rgb(50, 140, 202);
                     font-weight: normal;
+                    font-size: 15px;
                 }
 
                 .search-container > button {
@@ -67,6 +66,10 @@ class SearchBar extends HTMLElement{
                 .search-container > select {
                     margin-left: 5px;
                     border: 0;
+                }
+
+                .search-container > select:focus {
+                    outline: 0;
                 }
 
                 @media screen and (max-width: 600px){
@@ -91,7 +94,7 @@ class SearchBar extends HTMLElement{
                 }
             </style>
             <div id="search-container" class="search-container">
-                <input placeholder="masukkan tahun" id="searchYear" type="search">
+                <input placeholder="Tahun" id="searchYear" type="search">
                 <select name="season" id="seasonSearch">
                     <option value="spring">Spring</option>
                     <option value="summer">Summer</option>
