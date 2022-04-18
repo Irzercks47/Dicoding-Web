@@ -64,9 +64,16 @@
     padding-left: 1rem;
 }
 
-.card_title h4 {
+.card_title > a {
     font-size: 1.5rem;
     text-transform: capitalize;
+    text-decoration: none;
+    font-weight: bold;
+    color: #3b97fc;
+}
+
+.card_title > a:hover {
+    text-decoration:underline;
 }
 
 .synopsis {
@@ -89,9 +96,16 @@
     display: flex;
     padding: 1rem;
     margin-top: auto;
+    justify-content: center;
 }
+.card_footer > a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3b97fc;
+}
+
+.card_footer > a:hover {
+    text-decoration:underline;
+}
+
 /* anime card end */
-
-/* search bar start */
-
-/* search bar end */

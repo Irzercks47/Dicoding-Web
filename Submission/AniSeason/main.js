@@ -57,6 +57,34 @@ const main = () => {
         cardCon.innerHTML += `<h2 class="placeholder">${message}</h2>`;
     }
 
+    const renderAnime = (animes) => {
+        cardCon.innerHTML = ``
+
+        animes.forEach(anime =>{
+            cardCon.innerHTML += `
+                <div class="card">
+                    <div class="header">
+                        <img src="${anime.images.webp.image_url}" alt="${anime.title_english}" class="card_img" width="400">
+                    </div>
+                    <div class="card_body">
+                        <div class="tagged">
+                            <span class="tag">comedy</span>
+                        </div>
+                        <div class="card_title">
+                            <a href="${anime.url}" target="_blank">${anime.title}</a>
+                        </div>
+                        <div class="synopsis">
+                            <p>${anime.synopsis}</p>
+                        </div>
+                    </div>
+                    <div class="card_footer">
+                        <a href="${anime.studios.url}" target="_blank">${anime.studios.name}</a>
+                    </div>
+                </div>
+            ` 
+        })
+    }
+
 
 
     search.clickEvent = onButtonSearchClicked;
