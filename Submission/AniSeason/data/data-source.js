@@ -9,7 +9,7 @@ class DataSource{
             if(data.data){
                 return Promise.resolve(data.data)
             }else{
-                return Promise.reject(`{keyword} is not found`)
+                return Promise.reject(data.message)
             }
         })
     }
