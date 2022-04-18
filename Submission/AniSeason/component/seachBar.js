@@ -8,8 +8,11 @@ class SearchBar extends HTMLElement{
         this.render();
     }
 
-    get value() {
+    get year() {
         return this.querySelector("#searchYear").value;
+    }
+
+    get season() {
         return this.querySelector("#seasonSearch").value;
     }
 
@@ -17,7 +20,7 @@ class SearchBar extends HTMLElement{
         this.innerHTML = `
             <style>
                 .search-container {
-                    margin: 10px 30%;
+                    margin: 40px 30%;
                     max-width: 800px;
                     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
                     padding: 16px;
@@ -32,13 +35,13 @@ class SearchBar extends HTMLElement{
                     width: 75%;
                     padding: 16px;
                     border: 0;
-                    border-bottom: 1px solid cornflowerblue;
+                    border-bottom: 1px solid rgb(50, 140, 202);
                     font-weight: bold;
                 }
 
                 .search-container > input:focus {
                     outline: 0;
-                    border-bottom: 2px solid cornflowerblue;
+                    border-bottom: 2px solid rgb(50, 140, 202);
                 }
 
                 .search-container > input:focus::placeholder {
@@ -46,7 +49,7 @@ class SearchBar extends HTMLElement{
                 }
 
                 .search-container >  input::placeholder {
-                    color: cornflowerblue;
+                    color: rgb(50, 140, 202);
                     font-weight: normal;
                 }
 
@@ -55,7 +58,7 @@ class SearchBar extends HTMLElement{
                     cursor: pointer;
                     margin-left: auto;
                     padding: 16px;
-                    background-color: cornflowerblue;
+                    background-color: rgb(50, 140, 202);
                     color: white;
                     border: 0;
                     text-transform: uppercase;
@@ -102,3 +105,5 @@ class SearchBar extends HTMLElement{
     }
 
 }
+
+customElements.define('search-bar', SearchBar)

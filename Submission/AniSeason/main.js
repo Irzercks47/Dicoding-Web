@@ -1,4 +1,4 @@
-import './component/navBar.js'
+import './component/seachBar.js'
 const main = () => {
     
 }
