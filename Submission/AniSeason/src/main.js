@@ -7,17 +7,11 @@ const main = () => {
     const cardCon = document.querySelector(".container-card")
     
     axios.get(`${baseUrl}/upcoming`)
-        .then(resp => {
-            console.log(resp);
-            renderAnime(resp.data)
-        })
         .then(data => {
-            if(data.status) {
-                renderError(data.message);
-            } else {
-                console.log(data.data);
-                renderAnime(data.data);
-            }
+            console.log(data)
+            console.log(data.data)
+            console.log(data.data.data)
+            renderAnime(data.data.data);
         })
         .catch(error => {
             renderError(error);
@@ -65,6 +59,20 @@ const main = () => {
         cardCon.innerHTML = ``
 
         animes.forEach(anime =>{
+
+            let footer = anime.studios.map((studio) => {
+                console.log(studio)
+                return `<a href="${studio.url}" target="_blank">${studio.name}</a>`   
+            }).join(`\n`)
+            
+            if(footer == "") footer = `<p class="nothing">Studio TBA</p>`
+            
+            let synopsis = `<p>${anime.synopsis}</p>`
+            if(anime.synopsis == null) synopsis =`<p class="nothing">No synopsis has been added to this title.</p>`
+
+            // <a href="${e.url}" target="_blank">${e.name}</a>
+            // <a href="${e.url}" target="_blank">${e.name}</a>
+
             cardCon.innerHTML += `
                 <div class="card">
                     <div class="header">
@@ -78,11 +86,11 @@ const main = () => {
                             <a href="${anime.url}" target="_blank">${anime.title}</a>
                         </div>
                         <div class="synopsis">
-                            <p>${anime.synopsis}</p>
+                            <p>${synopsis}</p>
                         </div>
                     </div>
                     <div class="card_footer">
-                        <a href="${anime.studios.url}" target="_blank">${anime.studios.name}</a>
+                        ${footer}
                     </div>
                 </div>
             ` 
