@@ -8,9 +8,6 @@ const main = () => {
     
     axios.get(`${baseUrl}/upcoming`)
         .then(data => {
-            console.log(data)
-            console.log(data.data)
-            console.log(data.data.data)
             renderAnime(data.data.data);
         })
         .catch(error => {
@@ -22,17 +19,9 @@ const main = () => {
         const season = search.season
         console.log(year)
         console.log(season)
-        fetch(`${baseUrl}/${year}/${season}`)
-            .then(resp => {
-                return resp.json();
-            })
+        axios.get(`${baseUrl}/${year}/${season}`)
             .then(data => {
-                if(data.status) {
-                    renderError(data.message);
-                } else {
-                    console.log(data.data);
-                    renderAnime(data.data);
-                }
+                renderAnime(data.data.data);
             })
             .catch(error => {
                 renderError(error);
