@@ -1,3 +1,4 @@
+import axios from 'axios'
 import './component/seachBar.js'
 
 const baseUrl = "https://api.jikan.moe/v4/seasons"
@@ -5,15 +6,17 @@ const main = () => {
     const search = document.querySelector("search-bar");
     const cardCon = document.querySelector(".container-card")
     
-    fetch(`${baseUrl}/upcoming`)
+    axios.get(`${baseUrl}/upcoming`)
         .then(resp => {
-            return resp.json();
+            console.log(resp);
+            renderAnime(resp.data)
         })
         .then(data => {
             if(data.status) {
                 renderError(data.message);
             } else {
                 console.log(data.data);
+                renderAnime(data.data);
             }
         })
         .catch(error => {
@@ -34,6 +37,7 @@ const main = () => {
                     renderError(data.message);
                 } else {
                     console.log(data.data);
+                    renderAnime(data.data);
                 }
             })
             .catch(error => {
