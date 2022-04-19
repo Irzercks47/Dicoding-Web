@@ -17,8 +17,6 @@ const main = () => {
     const onButtonSearchClicked = () =>{
         const year = search.year
         const season = search.season
-        console.log(year)
-        console.log(season)
         axios.get(`${baseUrl}/${year}/${season}`)
             .then(data => {
                 renderAnime(data.data.data);
@@ -50,7 +48,6 @@ const main = () => {
         animes.forEach(anime =>{
 
             let footer = anime.studios.map((studio) => {
-                console.log(studio)
                 return `<a href="${studio.url}" target="_blank">${studio.name}</a>`   
             }).join(`\n`)
             
@@ -58,6 +55,10 @@ const main = () => {
             
             let synopsis = `<p>${anime.synopsis}</p>`
             if(anime.synopsis == null) synopsis =`<p class="nothing">No synopsis has been added to this title.</p>`
+
+            let tag = anime.genres.map((genre) => {
+                return `<span class="tag"><a href="${genre.url}">${genre.name}</a></span>`   
+            }).join(`\n`)            
 
             // <a href="${e.url}" target="_blank">${e.name}</a>
             // <a href="${e.url}" target="_blank">${e.name}</a>
@@ -69,7 +70,7 @@ const main = () => {
                     </div>
                     <div class="card_body">
                         <div class="tagged">
-                            <span class="tag">comedy</span>
+                            ${tag}
                         </div>
                         <div class="card_title">
                             <a href="${anime.url}" target="_blank">${anime.title}</a>
