@@ -110,9 +110,8 @@ class NavBar extends HTMLElement {
                 </a>
                 <div class="nav-links">
                     <ul>
-                        <li><a href="#">Random Character</a></li>
                         <li><a href="https://myanimelist.net/" target="_blank">MyAnimeList</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="https://www.livechart.me/">LiveChart.me</a></li>
                     </ul>
                 </div>
             </nav>
