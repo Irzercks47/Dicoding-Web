@@ -12,33 +12,50 @@ const http = require('http');
 //     response.statusCode = 200;
 //     response.end('<h1>Halo HTTP Server!</h1>');
 // };
+
+// const requestListener = (request, response) => {
+//     response.setHeader('Content-Type', 'text/html');
+//     response.statusCode = 200;
+//     const { method } = request;
+//     if(method === 'GET') {
+//         response.end('<h1>Hello!</h1>');
+//     }
+//     if(method === 'POST') {
+//         let body = [];
+
+//         request.on('data', (chunk) => {
+//             body.push(chunk);
+//         });
+
+//         request.on('end', () => {
+//             body = Buffer.concat(body).toString();
+//             const { name } = JSON.parse(body)
+//             response.end(`<h1>Hai! ${name}</h1>`);
+//         });
+//     }
+//     // Anda bisa mengevaluasi tipe method lainnya
+// };
+
 const requestListener = (request, response) => {
-    response.setHeader('Content-Type', 'text/html');
-    response.statusCode = 200;
-    let body = [];
+    const { url, method } = request;
 
-    request.on('data', (chunk) => {
-        body.push(chunk);
-    });
-    request.on('end', () => {
-        body = Buffer.concat(body).toString();
-    });
+    if(url === '/') {
+        if(method === 'GET') {
+            // curl -X GET http://localhost:5000/
+        }
+        // curl -X <any> http://localhost:5000/
+    }
 
-    
-    const { method } = request;
-    if(method === 'GET') {
-        response.end('<h1>Hello!</h1>');
+    if(url === '/about') {
+        if(method === 'GET') {
+            // curl -X GET http://localhost:5000/about
+        }
+        if(method === 'POST') {
+            // curl -X POST http://localhost:5000/about
+        }
+        // curl -X <any> http://localhost:5000/about
     }
-    if(method === 'POST') {
-        response.end('<h1>Hai!</h1>');
-    }
-    if(method === 'PUT') {
-        response.end('<h1>Bonjour!</h1>');
-    }
-    if(method === 'DELETE') {
-        response.end('<h1>Salam!</h1>');
-    }
-    // Anda bisa mengevaluasi tipe method lainnya
+    // curl -X <any> http://localhost:5000/<any>
 };
 
 const server = http.createServer(requestListener);
