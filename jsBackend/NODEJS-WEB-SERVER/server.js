@@ -13,6 +13,7 @@ const http = require('http');
 //     response.end('<h1>Halo HTTP Server!</h1>');
 // };
 
+//body requests
 // const requestListener = (request, response) => {
 //     response.setHeader('Content-Type', 'text/html');
 //     response.statusCode = 200;
@@ -36,26 +37,47 @@ const http = require('http');
 //     // Anda bisa mengevaluasi tipe method lainnya
 // };
 
+//routing requests
+// const requestListener = (request, response) => {
+//     const { url, method } = request;
+
+//     if(url === '/') {
+//         if(method === 'GET') {
+//             // curl -X GET http://localhost:5000/
+//         }
+//         // curl -X <any> http://localhost:5000/
+//     }
+
+//     if(url === '/about') {
+//         if(method === 'GET') {
+//             // curl -X GET http://localhost:5000/about
+//         }
+//         if(method === 'POST') {
+//             // curl -X POST http://localhost:5000/about
+//         }
+//         // curl -X <any> http://localhost:5000/about
+//     }
+//     // curl -X <any> http://localhost:5000/<any>
+// };
+
+//response status
+// const requestListener = (request, response) => {
+//     // memberitahu client bahwa request resource yang diminta tidak ada.
+//     response.statusCode = 404;
+
+//     // 404 defaultnya adalah 'not found'
+//     response.statusMessage = 'User is not found';
+// };
+
+//Response Header
+// const requestListener = (request, response) => {
+//     response.setHeader('Content-Type', 'text/html');
+//     response.setHeader('X-Powered-By', 'NodeJS');
+// };
+
+//response body
 const requestListener = (request, response) => {
-    const { url, method } = request;
-
-    if(url === '/') {
-        if(method === 'GET') {
-            // curl -X GET http://localhost:5000/
-        }
-        // curl -X <any> http://localhost:5000/
-    }
-
-    if(url === '/about') {
-        if(method === 'GET') {
-            // curl -X GET http://localhost:5000/about
-        }
-        if(method === 'POST') {
-            // curl -X POST http://localhost:5000/about
-        }
-        // curl -X <any> http://localhost:5000/about
-    }
-    // curl -X <any> http://localhost:5000/<any>
+    response.end('<html><body><h1>Hello, World!</h1></body></html>');
 };
 
 const server = http.createServer(requestListener);
