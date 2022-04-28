@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "lint": "eslint --fix"
+    "start": "nodemon ./src/server.js",
+    "lint": "eslint ./src --fix"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,8 @@
     "eslint": "^8.14.0",
     "eslint-config-google": "^0.14.0",
     "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.2.2"
   }
 }
