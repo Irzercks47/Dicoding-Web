@@ -64,6 +64,35 @@ const routes = [
             return `Hello, ${name}!`;
         },
     },
+    //request payload
+    //pada hapi kita sudah tidak perlu menrus data yang dikirim karena data yang awalnya stream sudah di proses oleh hapi 
+    //sehingga data yang kita pakai langsung dalam bentuk object
+    {
+        method: 'POST',
+        path: '/login',
+        handler: (request, h) => {
+            const { username, password } = request.payload;
+            return `Welcome ${username}!`;
+        },
+    },
+    //response toolkit
+    //parameter h pada handler di hapi merupakan hapi dimana dia dapat menampung banyak method yang digunakan untuk menannggapi request
+    {
+        method: 'GET',
+        path: '/',
+        handler: (request, h) => {
+            // return `Homepage`;
+            //detailed notion
+            // const response = h.response('success');
+            // response.type('text/plain');
+            // response.header('X-Custom', 'some-value');
+            // return response;
+            //chained
+            return h.response('success')
+                .type('text/plain')
+                .header('X-Custom', 'some-value');
+        },
+    },
 ];
 
 module.exports = routes;
