@@ -19,13 +19,12 @@ const addBookHandler = (request, h) => {
     }
 
     const id = nanoid(16);
-    const insertedAt = new Date().toISOString;
+    const insertedAt = new Date().toISOString();
     const updatedAt = insertedAt;
     const finished = pageCount === readPage ? true : false;
 
     const newBook = {
-        id, name, year, author, summary, publisher,
-        pageCount, readPage, finished, reading, insertedAt, updatedAt,
+        id, name, year, author, summary, publisher, pageCount, readPage, finished, reading, insertedAt, updatedAt,
     };
 
     if (pageCount >= readPage) {
@@ -60,12 +59,21 @@ const addBookHandler = (request, h) => {
     return response;
 };
 
-const getAllBooksHandler = () => ({
-    status: 'success',
-    data: {
-        books,
-    },
-});
+const getAllBooksHandler = () => {
+    const temp = [];
+    for (let i = 0; i < books.length; i++) {
+        const { id, name, publisher } = books[i];
+        temp.push({id, name, publisher});
+    }
+    body = {
+        'status': 'success',
+        'data': {
+            'books': temp,
+        },
+    };
+
+    return body;
+};
 
 const getBookByIdHandler = (request, h) => {
     const {id} = request.params;
