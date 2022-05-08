@@ -1,0 +1,22 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "google"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "eol-last": 0,
+        "linebreak-style": 0,
+        "indent": ["error", 4 ],
+        "object-curly-spacing": "off",
+        "max-len": ["error", { "code": 120 }],
+        "brace-style" : ["error", "stroustrup"]
+    }
+}
