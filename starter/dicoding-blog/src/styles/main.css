@@ -28,7 +28,7 @@ body {
 }
 
 .header__inner {
-    width: 800px;
+    min-width: 800px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
