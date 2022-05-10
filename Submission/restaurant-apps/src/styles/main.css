@@ -43,6 +43,8 @@ body {
     color: white;
     padding: 1rem;
     display: block;
+	min-width: 44px;
+	min-height: 44px;
 }
 
 .nav-links li:hover {
@@ -56,8 +58,8 @@ body {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .toggle-button .bar {
@@ -176,8 +178,11 @@ body {
 }
 
 .list_item_title a {
+	display: inline-block;
 	text-decoration: none;
 	color: inherit;
+	min-width: 44px;
+	min-height: 44px;
 }
 
 .list_item_desc {
@@ -219,6 +224,7 @@ footer {
     }
 
     .nav-tittle {
+		font-size: 1rem;
         padding-left: 0;
     }
 
@@ -230,6 +236,7 @@ footer {
     .navbar {
         flex-direction: column;
         align-items: flex-start;
+		padding: 1rem;
     }
 
     .nav-links ul {
