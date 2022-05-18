@@ -17,6 +17,7 @@ const Detail = {
     const movie = await TheMovieDbSource.detailMovie(url.id);
     const movieContainer = document.querySelector('#movie');
     movieContainer.innerHTML = createMovieDetailTemplate(movie);
+    console.log(FavoriteMovieIdb);
 
     LikeButtonPresenter.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
